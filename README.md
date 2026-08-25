@@ -27,6 +27,26 @@ Depending on the installed PyTorch version and CUDA environment, you may need to
 
 No raw ECG recordings, processed arrays, trained checkpoints, logs, or result figures are included in this repository. Do not distribute participant-level data without confirming its license, ethics approval, and any institutional requirements.
 
+The repository intentionally does not mirror `SCD` or `NSR` on GitHub. Use the official PhysioNet distribution after reviewing its access and reuse terms:
+
+- Sudden Cardiac Death Holter Database (`sddb`): https://physionet.org/content/sddb/
+- MIT-BIH Normal Sinus Rhythm Database (`nsrdb`): https://physionet.org/content/nsrdb/
+
+After installing the dependencies, the included helper can download authorized copies:
+
+```bash
+python scripts/download_physionet.py --output-dir data
+```
+
+For a single database:
+
+```bash
+python scripts/download_physionet.py --output-dir data --datasets scd
+python scripts/download_physionet.py --output-dir data --datasets nsr
+```
+
+Some PhysioNet databases require an account, credentialed access, or acceptance of a data use agreement. The script cannot bypass those requirements. The resulting directories are ignored by Git and must not be committed unless redistribution is explicitly permitted.
+
 The exported notebooks contain machine-specific absolute paths from the original research environment. Before executing a notebook, replace the SCD and NSR data paths with directories available on your machine. A typical local layout is:
 
 ```text
